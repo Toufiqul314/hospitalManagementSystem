@@ -23,6 +23,7 @@ public class Patient {
 
     private String name;
 
+    @ToString.Exclude
     private LocalDate birthDate;
 
     private  String email;
