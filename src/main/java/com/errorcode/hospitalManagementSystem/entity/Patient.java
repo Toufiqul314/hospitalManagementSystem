@@ -1,5 +1,6 @@
 package com.errorcode.hospitalManagementSystem.entity;
 
+import com.errorcode.hospitalManagementSystem.entity.type.BloodGroupType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -45,5 +46,6 @@ public class Patient {
     @Column(updatable = false)
     private LocalDateTime createdAt;
 
-    private String bloodGroup;
+    @Enumerated(EnumType.STRING)
+    private BloodGroupType bloodGroup;
 }
