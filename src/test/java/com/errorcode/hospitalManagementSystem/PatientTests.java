@@ -3,10 +3,12 @@ package com.errorcode.hospitalManagementSystem;
 import com.errorcode.hospitalManagementSystem.entity.Patient;
 import com.errorcode.hospitalManagementSystem.repository.PatientRepository;
 import com.errorcode.hospitalManagementSystem.service.PatientService;
+import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @SpringBootTest
@@ -30,7 +32,15 @@ public class PatientTests {
     @Test
     public void testTransactioMethods(){
 
-        Patient patient=patientService.getPatientById(1L);
-        System.out.println(patient);
+        //Patient patient=patientService.getPatientById(1L);
+        //Patient patient=patientRepository.findById(1L).orElseThrow(()->new EntityNotFoundException("Patient not found with id : 1"));
+
+        //Patient patient=patientRepository.findByName("Diya Patel");
+
+        List<Patient>patientList=patientRepository.findByBirthDateOrEmail(LocalDate.of(1988,3,15),"diya.patel@example.com");
+
+        for (Patient patient:patientList) {
+            System.out.println(patient);
+        }
     }
 }
