@@ -3,12 +3,10 @@ package com.errorcode.hospitalManagementSystem;
 import com.errorcode.hospitalManagementSystem.entity.Patient;
 import com.errorcode.hospitalManagementSystem.repository.PatientRepository;
 import com.errorcode.hospitalManagementSystem.service.PatientService;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @SpringBootTest
@@ -37,7 +35,9 @@ public class PatientTests {
 
         //Patient patient=patientRepository.findByName("Diya Patel");
 
-        List<Patient>patientList=patientRepository.findByBirthDateOrEmail(LocalDate.of(1988,3,15),"diya.patel@example.com");
+        //List<Patient>patientList=patientRepository.findByBirthDateOrEmail(LocalDate.of(1988,3,15),"diya.patel@example.com");
+
+        List<Patient>patientList=patientRepository.findByNameContainingOrderByIdDesc("Di");
 
         for (Patient patient:patientList) {
             System.out.println(patient);
