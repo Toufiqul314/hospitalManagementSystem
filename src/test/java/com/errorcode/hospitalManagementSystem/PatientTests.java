@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class PatientTests {
 
         //List<Patient>patientList=patientRepository.findByBornAfterDate(LocalDate.of(1993,3,14));
 
-        Page<Patient> patientList=patientRepository.findAllPatients(PageRequest.of(0,2));
+        Page<Patient> patientList=patientRepository.findAllPatients(PageRequest.of(0,1, Sort.by("name")));
 
         for (Patient patient:patientList) {
             System.out.println(patient);
