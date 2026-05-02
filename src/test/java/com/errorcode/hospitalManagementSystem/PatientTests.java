@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @SpringBootTest
 public class PatientTests {
@@ -47,6 +48,11 @@ public class PatientTests {
 
         for (Patient patient:patientList) {
             System.out.println(patient);
+        }
+
+        List<Object[]>bloodGroupList=patientRepository.countEachBloodGroupTye();
+        for (Object[] objects:bloodGroupList){
+            System.out.println(objects[0]+" "+objects[1]);
         }
     }
 }
