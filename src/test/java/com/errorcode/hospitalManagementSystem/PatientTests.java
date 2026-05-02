@@ -1,5 +1,6 @@
 package com.errorcode.hospitalManagementSystem;
 
+import com.errorcode.hospitalManagementSystem.dto.BloodGroupCountResponseEntity;
 import com.errorcode.hospitalManagementSystem.entity.Patient;
 import com.errorcode.hospitalManagementSystem.entity.type.BloodGroupType;
 import com.errorcode.hospitalManagementSystem.repository.PatientRepository;
@@ -61,7 +62,12 @@ public class PatientTests {
         }
          */
 
-        int rowsUpdated=patientRepository.updateNameWithID("Arav Sharma",1L);
-        System.out.println(rowsUpdated);
+//        int rowsUpdated=patientRepository.updateNameWithID("Arav Sharma",1L);
+//        System.out.println(rowsUpdated);
+
+        List<BloodGroupCountResponseEntity>bloodGroupList=patientRepository.countEachBloodGroupType();
+        for (BloodGroupCountResponseEntity bloodGroup : bloodGroupList) {
+            System.out.println(bloodGroup);
+        }
     }
 }

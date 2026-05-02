@@ -1,5 +1,6 @@
 package com.errorcode.hospitalManagementSystem.repository;
 
+import com.errorcode.hospitalManagementSystem.dto.BloodGroupCountResponseEntity;
 import com.errorcode.hospitalManagementSystem.entity.Patient;
 import com.errorcode.hospitalManagementSystem.entity.type.BloodGroupType;
 import jakarta.transaction.Transactional;
@@ -30,8 +31,10 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
     List<Patient>findByBornAfterDate(@Param("birthDate") LocalDate birthDate);
 
     // group by query metho
-    @Query("select p.bloodGroup, Count(p) from Patient p group by p.bloodGroup")
-    List<Object[]>countEachBloodGroupTye();
+    @Query("select new com.errorcode.hospitalManagementSystem.dto.BloodGroupCountResponseEntity(p.bloodGroup," +
+            " Count(p))from Patient p group by p.bloodGroup")
+    //List<Object[]>countEachBloodGroupTye();
+    List<BloodGroupCountResponseEntity>countEachBloodGroupType();
 
     // native query for JPQL
     @Query(value = "select * from patient",nativeQuery = true)
