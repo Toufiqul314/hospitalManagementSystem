@@ -48,13 +48,20 @@ public class PatientTests {
 
         List<Patient>patientList=patientRepository.findAllPatients();
 
+        /*
         for (Patient patient:patientList) {
             System.out.println(patient);
         }
+        */
 
+        /*
         List<Object[]>bloodGroupList=patientRepository.countEachBloodGroupTye();
         for (Object[] objects:bloodGroupList){
             System.out.println(objects[0]+" "+objects[1]);
         }
+         */
+
+        int rowsUpdated=patientRepository.updateNameWithID("Arav Sharma",1L);
+        System.out.println(rowsUpdated);
     }
 }
