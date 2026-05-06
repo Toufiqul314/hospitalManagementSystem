@@ -24,13 +24,18 @@ public class InsuranceTests {
     @Test
     public void insuranceTest(){
         Insurance insurance = Insurance.builder()
-                .policyNumber("BRAC-BANK_1234")
+                .policyNumber("BRAC-BANK_12345")
                 .provider("BRACK")
                 .validUntil(LocalDate.of(2030,12,12))
                 .build();
 
-      Patient patient=insuranceService.assingInsuranceToPatient(insurance,1L);
+        Patient patient = insuranceService.assignInsuranceToPatient(insurance, 2L);
+
         System.out.println(patient);
+
+        var newPatient = insuranceService.disaccociateInsuranceFromPatient(patient.getId());
+
+        System.out.println(newPatient);
     }
 
     @Test
