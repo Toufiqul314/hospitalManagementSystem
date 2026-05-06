@@ -19,12 +19,12 @@ public class AppointmentService {
     private final PatientRepository patientRepository;
 
     @Transactional
-    public Appointment createNeAppointment(Appointment appointment,Long doctorId,Long patientId){
+    public Appointment createNewAppointment(Appointment appointment, Long doctorId, Long patientId){
 
         Doctor doctor=doctorRepository.findById(doctorId).orElseThrow();
         Patient patient=patientRepository.findById(patientId).orElseThrow();
 
-        if(appointment.getId()==null)throw  new IllegalStateException("Appointment should not have an id");
+        if(appointment.getId()!=null)throw new IllegalStateException("Appointment should not have an id");
 
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
