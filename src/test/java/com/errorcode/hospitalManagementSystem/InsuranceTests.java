@@ -40,7 +40,7 @@ public class InsuranceTests {
                 .reason("Cancer")
                 .build();
 
-        var newAppointment= appointmentService.createNeAppointment(appointment,1L,2L);
+        var newAppointment= appointmentService.createNewAppointment(appointment,1L,2L);
         System.out.println(newAppointment);
 
     }
