@@ -1,20 +1,25 @@
 package com.errorcode.hospitalManagementSystem;
 
+import com.errorcode.hospitalManagementSystem.entity.Appointment;
 import com.errorcode.hospitalManagementSystem.entity.Insurance;
 import com.errorcode.hospitalManagementSystem.entity.Patient;
+import com.errorcode.hospitalManagementSystem.service.AppointmentService;
 import com.errorcode.hospitalManagementSystem.service.InsuranceService;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SpringBootTest
 public class InsuranceTests {
 
     @Autowired
     private InsuranceService  insuranceService;
+
+    @Autowired
+    private AppointmentService appointmentService;
 
     @Test
     public void insuranceTest(){
@@ -27,4 +32,17 @@ public class InsuranceTests {
       Patient patient=insuranceService.assingInsuranceToPatient(insurance,1L);
         System.out.println(patient);
     }
+
+    @Test
+    public void testCreateAppointment(){
+        Appointment appointment=Appointment.builder()
+                .appointmentTime(LocalDateTime.of(2026,5,14,16,0))
+                .reason("Cancer")
+                .build();
+
+        var newAppointment= appointmentService.createNeAppointment(appointment,1L,2L);
+        System.out.println(newAppointment);
+
+    }
+
 }
